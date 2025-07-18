@@ -1,24 +1,25 @@
-const express = require("express");
 const axios = require("axios");
 
-const app = express();
-const BOT_URL = process.env.BOT_URL || "https://08dcc9c4-b519-4324-91b6-53118c61e61e-00-46zd7avli2xn.sisko.replit.dev/"; // Thay link bot
+const BOT_URL = process.env.BOT_URL || "https://bot.duohoagroblox.replit.dev";
 
-function pingBot() {
-  const time = new Date().toLocaleTimeString();
+function ping() {
   axios.get(BOT_URL)
-    .then(() => console.log(`[${time}] ✅ Ping bot ok`))
-    .catch(err => console.log(`[${time}] ❌ Ping lỗi: ${err.message}`));
+    .then(() => console.log(`✅ Ping thành công: ${BOT_URL}`))
+    .catch((err) => console.log(`❌ Ping lỗi: ${err.message}`));
 }
 
-pingBot();
-setInterval(pingBot, 240000); // 4 phút
+ping(); // ping lần đầu
+setInterval(ping, 4 * 60 * 1000); // ping mỗi 4 phút
+
+// Thêm server express để giữ Render active
+const express = require("express");
+const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Ping bot đang chạy...");
+  res.send("🟢 Ping bot đang chạy...");
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server chạy trên port ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🌐 Web đang chạy tại cổng ${PORT}`);
 });
