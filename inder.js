@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 
 const app = express();
-const BOT_URL = process.env.BOT_URL || "https://bot.duohoagroblox.replit.dev"; // Thay link bot
+const BOT_URL = process.env.BOT_URL || "https://08dcc9c4-b519-4324-91b6-53118c61e61e-00-46zd7avli2xn.sisko.replit.dev/"; // Thay link bot
 
 function pingBot() {
   const time = new Date().toLocaleTimeString();
